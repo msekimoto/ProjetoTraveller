@@ -8,11 +8,9 @@ namespace api_traveller.Controllers
         public class Disponibilidade
         {
             public int Id { get; set; }
+            public int HotelId { get; set; }
             public DateTime Data { get; set; }
-            public decimal Preco { get; set; }
-
-            [JsonIgnore]
-            public virtual Hotel Hotel { get; set; }
+            public decimal Preco { get; set; }            
         }
     }
 }

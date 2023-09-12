@@ -18,24 +18,16 @@ namespace api_traveller.Controllers
             _gulliverContext = gulliverContext;
         }
 
-        [HttpGet]
-        public IEnumerable<Hotel> GetTodos()
+        [HttpGet("PorHotel")]
+        public IEnumerable<Disponibilidade> GetDisponibilidade(int hotelId)
         {
-            return _gulliverContext.Hoteis.Include(hotel => hotel.Disponibilidades);
-        }
-
-        [HttpGet("PorNome")]
-        public IEnumerable<Hotel> GetHotelPorNome(string cidade)
-        {
-            return _gulliverContext.Hoteis
-                .Include(hotel => hotel.Disponibilidades)
-                .Where(hotel => hotel.Cidade.ToUpperInvariant().Contains(cidade.ToUpperInvariant()));
+            return _gulliverContext.Disponibilidades.Where(hotel => hotel.HotelId == hotelId);
         }
 
         [HttpPost]
-        public void PostHotel([FromBody]Hotel hotel)
+        public void PostHotel([FromBody]Disponibilidade disponibilidade)
         {
-            _gulliverContext.Hoteis.Add(hotel);
+            _gulliverContext.Disponibilidades.Add(disponibilidade);
             _gulliverContext.SaveChanges();
         }
     }

@@ -14,9 +14,6 @@ public partial class HoteisController
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //builder.Entity<Hotel>()
-            //    .HasMany(b => b.Disponibilidades)
-            //    .WithOne(b => b.Hotel);
 
         }
 
